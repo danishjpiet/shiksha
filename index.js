@@ -11,6 +11,10 @@ app.get('/', (req, res) => {
   res.status(200).json({ message: 'api working' });
 });
 
+app.get('/api/getColleges', (req, res) => {
+  res.status(200).json({ message: 'api working again' });
+});
+
 app.get('/api/getColleges/:page_no', async (req, res) => {
     const jsonObj = JSON.stringify({
         "uaf": [
@@ -20,7 +24,6 @@ app.get('/api/getColleges/:page_no', async (req, res) => {
         "url": "/colleges"+"-"+req.params.page_no,
         "dn": "national"
     });
-    
     // const buffer = Buffer.from(jsonObj);
     // const token = base64url(buffer);
     // const response = await fetch('https://apis.shiksha.com/apigateway/categorypageapi/v2/info/getCategoryPageFull?data='+token);
