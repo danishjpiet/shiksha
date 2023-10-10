@@ -1,8 +1,6 @@
 const express = require('express');
 const cors = require('cors');
 const app = express();
-const base64url = require('base64url');
-// app.use(rateLimiter);
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -11,28 +9,7 @@ app.get('/', (req, res) => {
   res.status(200).json({ message: 'api working' });
 });
 
-app.get('/api/getColleges', (req, res) => {
-  res.status(200).json({ message: 'api working again' });
-});
-
-app.get('/api/getColleges/:page_no', async (req, res) => {
-    const jsonObj = JSON.stringify({
-        "uaf": [
-          "state"
-        ],
-        "rf": "filters",
-        "url": "/colleges"+"-"+req.params.page_no,
-        "dn": "national"
-    });
-    
-    const buffer = Buffer.from(jsonObj);
-    const token = base64url(buffer);
-    const response = await fetch('https://apis.shiksha.com/apigateway/categorypageapi/v2/info/getCategoryPageFull?data='+token);
-    const data = await response.json(); 
-    console.log(data);
-
-    res.status(200).json({ message: jsonObj });
-  });
+app.use('/', require('./routes/index'))
 
 app.all('*', (req, res) => {
   const response = {
