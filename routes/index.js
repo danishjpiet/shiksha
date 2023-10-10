@@ -19,7 +19,8 @@ router.get('/api/getColleges/:page_no', async (req, res, next) => {
     const buffer = Buffer.from(jsonObj);
     const token = base64url(buffer);
     try{
-        const response = await fetch('https://apis.shiksha.com/apigateway/categorypageapi/v2/info/getCategoryPageFull?data='+token);
+        // const response = await fetch('https://apis.shiksha.com/apigateway/categorypageapi/v2/info/getCategoryPageFull?data='+token);
+        const response = await fetch('https://catfact.ninja/fact');
         const data = await response.json(); 
         res.status(200).json({ message: data });
     }catch(e){
