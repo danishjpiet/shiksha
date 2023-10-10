@@ -16,12 +16,16 @@ router.get('/api/getColleges/:page_no', async (req, res, next) => {
         "dn": "national"
     });
 
-    // const buffer = Buffer.from(jsonObj);
-    // const token = base64url(buffer);
-    // const response = await fetch('https://apis.shiksha.com/apigateway/categorypageapi/v2/info/getCategoryPageFull?data='+token);
-    // const data = await response.json(); 
+    const buffer = Buffer.from(jsonObj);
+    const token = base64url(buffer);
+    try{
+        const response = await fetch('https://apis.shiksha.com/apigateway/categorypageapi/v2/info/getCategoryPageFull?data='+token);
+        const data = await response.json(); 
+        res.status(200).json({ message: data });
+    }catch(e){
+        res.status(200).json({ error: e });
+    }
 
-    res.status(200).json({ message: jsonObj });
   });
 
 
