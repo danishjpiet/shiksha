@@ -7,7 +7,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.get('/', (req, res) => {
+app.get('/api', (req, res) => {
   res.status(200).json({ message: 'api working' });
 });
 
@@ -39,8 +39,9 @@ app.all('*', (req, res) => {
   return res.status(response.status_code).json(response);
 });
 
-const PORT = process.env.PORT || 5000;
+export default app;
+// const PORT = process.env.PORT || 5000;
 
-app.listen(PORT, () => {
-  console.log(`server started at port ${PORT}`);
-});
+// app.listen(PORT, () => {
+//   console.log(`server started at port ${PORT}`);
+// });
