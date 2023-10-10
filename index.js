@@ -39,9 +39,8 @@ app.all('*', (req, res) => {
   return res.status(response.status_code).json(response);
 });
 
-export default app;
-// const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5000;
 
-// app.listen(PORT, () => {
-//   console.log(`server started at port ${PORT}`);
-// });
+app.listen(PORT, () => {
+  console.log(`server started at port ${PORT}`);
+});
