@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const base64url = require('base64url');
 
-router.get('/api', (req, res, next)=>{
+router.get('/api/getColleges', (req, res, next)=>{
       res.status(200).json({ message: 'api working' });
 
 });
